@@ -25,3 +25,35 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@theme {
+  /* This creates the .animate-fade-in utility */
+  --animate-fade-in: fade-in 1s ease-out forwards;
+  --animate-fade-in-music:  fade-in 500ms ease-out   500ms forwards;
+  --animate-fade-in-social: fade-in 500ms ease-out  1000ms forwards;
+  --animate-fade-in-merch:  fade-in 500ms ease-out  1500ms forwards;
+  --animate-fade-in-shows:  fade-in 500ms ease-out  2000ms forwards;
+  --animate-fade-in-sec:    fade-in 500ms ease-out  forwards;
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  --animate-portrait: portrait 3s ease-out forwards;
+
+  @keyframes portrait {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}

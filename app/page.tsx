@@ -1,47 +1,56 @@
 import Image from "next/image";
 
-function CustomLink({title, link, left, top, rotate}: {title:string, link:string, left:number, top:number, rotate:number}) {
+function CustomLink({title, link, className}: {title:string, link:string, className:string}) {
   return (
-    <div className={`absolute left-${left} top-${top} ${rotate<0 ? '-' : ''}rotate-${Math.abs(rotate)}`}>
-      <p className="group relative w-max uppercase text-5xl text-shadow-sm">
+    <div className={`absolute opacity-0 ${className}`}>
+      <p className="group relative w-max uppercase text-white text-3xl sm:text-4xl md:text-5xl lg:text-5xl text-shadow-sm">
         <a href={link} target="_blank">{title}</a>
-        <span className="absolute -bottom-1 left-1/2  w-0 transition-all h-1 bg-white group-hover:w-3/6"></span>
-        <span className="absolute -bottom-1 right-1/2 w-0 transition-all h-1 bg-white group-hover:w-3/6"></span>
+        <span className="absolute -bottom-1 left-1/2  w-0 transition-all h-0.75 bg-white group-hover:w-3/6"></span>
+        <span className="absolute -bottom-1 right-1/2 w-0 transition-all h-0.75 bg-white group-hover:w-3/6"></span>
       </p>
     </div>
   )
 }
 
 export default function Home() {
+  const showBorders = false
   return (
-    <div className="h-screen flex flex-col space-between justify-between items-center">
-      {/* // <div className="h-screen flex flex-col space-between justify-between items-center border-solid border-green-100 border-8"> */}
+    <div className={`h-screen flex flex-col space-between justify-between items-center bg-[url('/wall-4c.webp')] bg-cover bg-bottom ${showBorders && 'border border-solid border-4 border-red-500 sm:border-green-500 md:border-blue-500 lg:border-yellow-500'}`}>
       <div className="h-full flex justify-center items-center">
-        <div className="relative inline-block p-15">
-          {/* <div className="relative inline-block p-15 border-solid border-red-50 border-8"> */}
+        <div className={`relative inline-block p-15 ${showBorders && 'border border-solid border-red-600'}`}>
           <Image
-            className="block"
-            src={"/portrait.png"}
+            className={`block border ${showBorders && 'border-solid border-yellow-600'} animate-portrait`}
+            src={"/portrait-3d.webp"}
             alt={"A portrait picture of singer Omar Price"}
-            width={500}
-            height={500}
+            width={650}
+            height={650}
           />
-          <CustomLink title="Music" link="https://open.spotify.com/artist/08k8pppcyn77RlZW3Fg8K5" left={2} top={93} rotate={62}/>
-          <CustomLink title="Social" link="https://www.instagram.com/omarpierce_/" left={2} top={35} rotate={-55}/>
-          <CustomLink title="Merch" link="https://www.shopify.com/" left={55} top={9} rotate={0}/>
-          <CustomLink title="Shows" link="https://www.bandsintown.com/a/15581283-omar-pierce" left={-30} top={35} rotate={60}/>
-          {/* <a target="_blank" className="uppercase absolute text-5xl text-shadow-sm right-9 top-35 rotate-60" href=""     >Shows</a> */}
+          <CustomLink title="Music" link="https://open.spotify.com/artist/08k8pppcyn77RlZW3Fg8K5"
+            // className="-left-10 top-120 rotate-50 animate-fade-in-music"/>
+            className="bottom-2/7 left-0 rotate-50 animate-fade-in-music"/>
+
+          <CustomLink title="Social" link="https://www.instagram.com/omarpierce_/"
+            // className="-left-13 top-25 -rotate-55 animate-fade-in-social"/>
+            className="-left-0 top-1/10 -rotate-45 animate-fade-in-social"/>
+          
+          <CustomLink title="Merch" link="https://www.shopify.com/"
+            // className="left-68 -top-10 animate-fade-in-merch"/>
+            className="left-7/17 -top-0 animate-fade-in-merch"/>
+          
+          <CustomLink title="Shows" link="https://www.bandsintown.com/a/15581283-omar-pierce"
+            // className="right-3 top-25 rotate-50 animate-fade-in-shows"/>
+            className="right-0 top-1/10 rotate-45 animate-fade-in-shows"/>
+          
           <Image
             src={"/logo.svg"}
             alt={"Omar Pierce logo"}
-            width={60}
-            height={60}
-            className="absolute right-3 bottom-6"
+            width={50}
+            height={50}
+            className="absolute right-0 bottom-2 animate-fade-in-sec"
           />
         </div>
       </div>
-      <p>2025 website by <a href="https://instagram.com/alvaro.makes.music"><u>Álvaro Cáceres</u></a></p>
+      <p className="pb-5 text-xl text-white animate-fade-in-sec">2025 website by <a href="https://instagram.com/alvaro.makes.music"><u>Álvaro Cáceres</u></a></p>
     </div>
-    // </div>
   );
 }
